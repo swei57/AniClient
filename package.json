@@ -4,10 +4,12 @@
   "main": "main.js",
   "private": true,
   "dependencies": {
+    "bootstrap": "^4.3.1",
     "electron": "^4.0.8",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "react-video-players": "^0.1.11"
   },
   "scripts": {
     "start": "react-scripts start",
