@@ -1,0 +1,141 @@
+body {
+    /* background-color: #18486a !important; */
+    background-color: #303030 !important;
+}
+
+.login-title {
+    color: white;
+    text-align: center;
+    font-size: 50px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding-top: 50px;
+}
+
+.login-image {
+    display: block;
+    margin: 0 auto;
+    width: 200px;
+}
+
+.login-fields {
+    display: grid;
+    grid-template-areas: 'un un' 'pw pw' 'kl kp';
+    grid-row-gap: 15px;
+    margin: auto;
+    max-width: 325px;
+}
+
+.login-label {
+    color: #e0e0e0;
+    display: inline-block;
+    min-width: 120px;
+    padding: 0;
+}
+
+.login-username {
+    grid-area: un;
+}
+
+.login-password {
+    grid-area: pw;
+}
+
+.login-username-check {
+    grid-area: kl;
+    margin:auto;
+}
+
+.login-password-check {
+    grid-area: kp;
+    margin: auto;
+}
+
+.login-input {
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+}
+
+.login-button {
+    background-color: #a6c5fd;
+    padding: 5px 20px;
+    margin: 20px auto; 
+    max-width: 150px;
+    text-align: center;
+    border-radius: 10px;
+    transition: .5s;
+    color: white;
+    background-color: #d9703a;
+}
+
+.login-button:hover {
+    cursor: pointer;
+    /* background-color: #6999f1; */
+    background-color: #a8400b;
+}
+
+.login-text {
+    color: #e0e0e0 !important;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: 40px auto 40px;
+    margin:auto;
+    max-width: 400px;
+}
+
+.small {
+    font-size: 12px;
+}
+
+.large {
+    font-size: 24px;
+}
+
+.center {
+    text-align: center;
+}
+
+.invert {
+    filter: invert(100%);
+}
+
+.arrow {
+    width: 40px;
+    top: 40%;
+    position: relative;
+}
+
+.arrow:hover {
+    cursor: pointer;
+}
+
+.flip {
+    transform: rotate(180deg);
+}
+
+input[type=checkbox] {
+    width: 13px;
+    height: 13px;
+    padding: 0;
+    margin-right:5px;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+    *overflow: hidden;
+}
+
+a:link {
+    color: #e0e0e0;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #e0e0e0;
+}
+
+a:active {
+    cursor: pointer;
+    color: #a1a0a0;
+}

@@ -1,3 +1,5 @@
+To start the application: First run "npm start" in a terminal, then in a seperate terminal run "npm run electron-start"
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
