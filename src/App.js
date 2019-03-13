@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
-import {VideoPlayer} from 'react-video-players';
-
+import Header from './components/header/header';
+import SideBar from './components/sidebar/sidebar';
+import Page from './components/page/page';
+import MainBody from './components/main-body/main-body';
 
 class App extends Component {
   render() {
     return (
      <div>
-      <div className = "row">
-      <div className = "col"> hehe</div>
-      <div className = "col"> xd</div>
-      </div>
+      <Header/>
+      <SideBar/>
+      <Page/>
+      <MainBody/>
      </div>
     );
   }
