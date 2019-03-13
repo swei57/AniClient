@@ -1,6 +1,6 @@
 body {
-    background-color: #18486a !important;
-    /* background-color: #303030 !important; */
+    /* background-color: #18486a !important; */
+    background-color: #303030 !important;
 }
 
 .login-title {
@@ -64,13 +64,14 @@ body {
     text-align: center;
     border-radius: 10px;
     transition: .5s;
-    /* color: white; */
+    color: white;
+    background-color: #d9703a;
 }
 
 .login-button:hover {
     cursor: pointer;
-    background-color: #6999f1;
-    /* background-color: #d9703a; */
+    /* background-color: #6999f1; */
+    background-color: #a8400b;
 }
 
 .login-text {
