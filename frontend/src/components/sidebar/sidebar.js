@@ -43,7 +43,7 @@ class SideBar extends Component {
 		for(var item of items) {
 			if(this.state.expanded) {
 				display.push(
-					<a className="nav-item" onClick={this.toggleNav}>{item.text}</a>
+					<a className="nav-item" onClick={() => this.reroute(item.newRoute)}>{item.text}</a>
 				);
 			}
 			else {
