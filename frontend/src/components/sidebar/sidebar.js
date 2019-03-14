@@ -14,6 +14,9 @@ class SideBar extends Component {
 			this.setState({width: 50, expanded: false});
 		}
 	}
+	reroute = (newRoute) => {
+		console.log(newRoute);
+	}
 	render() {
 		var navStyle = {
 			width: this.state.width
@@ -21,15 +24,18 @@ class SideBar extends Component {
 		const items = [
 			{
 				icon: "https://cdn4.iconfinder.com/data/icons/follower/512/login-man-person-human-body-512.png",
-				text: "Watch Togeather"
+				text: "Watch Togeather",
+				newRoute: ""
 			},
 			{
 				icon: "https://image.flaticon.com/icons/png/512/613/613307.png",
-				text: "Currently Watching"
+				text: "Currently Watching",
+				newRoute: ""
 			},
 			{
 				icon: "https://image.flaticon.com/icons/png/512/63/63355.png",
-				text: "Recently Updated"
+				text: "Recently Updated",
+				newRoute: ""
 			},
 		];
 
@@ -42,7 +48,7 @@ class SideBar extends Component {
 			}
 			else {
 				display.push(
-					<a className="nav-item" onClick={this.toggleNav}><img src={item.icon} className="nav-icon invert" /></a>
+					<a className="nav-item" onClick={() => this.reroute(item.newRoute)}><img src={item.icon} className="nav-icon invert" /></a>
 				);
 			}
 			
