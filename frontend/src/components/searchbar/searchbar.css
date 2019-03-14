@@ -1,0 +1,10 @@
+.searchIcon{
+    color: white;
+}
+.searchbar{
+    width: 325px;
+    border: none;
+    background: #303030;
+    border-style: solid;
+    border-width: 1px;
+}
