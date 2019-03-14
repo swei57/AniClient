@@ -7,7 +7,7 @@ const SearchBar = ({searchChange}) => {
          <input className = "text-light searchbar" type = "search" 
          placeholder ="search anime "
          onChange =  {searchChange}></input> 
-         <i class="searchIcon fas fa-search ml-3" aria-hidden="true"></i>
+         <i className="searchIcon fas fa-search ml-3" aria-hidden="true"></i>
          </div>
     );
 }

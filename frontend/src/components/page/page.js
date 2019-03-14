@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 
-import SideBar from '../sidebar/sidebar';
-
 class Page extends Component {
   render() {
     return (
       
-     <div className = "pagination">
+     <div className = "pagination text-white">
        page
        uwuwuwuwuwuss
      </div>
