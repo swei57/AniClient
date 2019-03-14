@@ -4,7 +4,7 @@ class Page extends Component {
   render() {
     return (
      <div className = "pagination">
-       uwuwuwuwuwu
+       page
      </div>
     );
   }

@@ -9,8 +9,8 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render((  <BrowserRouter>
   <div>
-  <Route exact path="/login" component={Login} />
-  <Route exact path="/" component={App} />
+  <Route exact path="/" component={Login} />
+  <Route exact path="/mainwindow" component={App} />
   </div>
 </BrowserRouter>), document.getElementById('root'));
 
