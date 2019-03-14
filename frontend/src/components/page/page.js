@@ -7,6 +7,7 @@ class Page extends Component {
     return (
       
      <div className = "pagination">
+       page
      <SideBar />
        uwuwuwuwuwuss
      </div>
