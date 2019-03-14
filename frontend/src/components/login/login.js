@@ -35,7 +35,6 @@ class Login extends Component {
     }
     renderRedirect = () => {
         if (this.state.redirect) {
-        document.body.style.backgroundColor = "#303030";
           return <Redirect to='/mainwindow' />
         }
       }
