@@ -24,7 +24,7 @@ class SideBar extends Component {
 		const items = [
 			{
 				icon: "https://cdn4.iconfinder.com/data/icons/follower/512/login-man-person-human-body-512.png",
-				text: "Watch Togeather",
+				text: "Watch Together",
 				newRoute: ""
 			},
 			{
