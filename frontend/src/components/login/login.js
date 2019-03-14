@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import "./login.css";
-import { VideoPlayer } from 'react-video-players';
+import { Redirect } from 'react-router-dom';
 
 
 var styles = [
@@ -19,13 +19,26 @@ var styles = [
         buttonHover: "#a8400b"
     }
 ];
-var currentStyle = 1;
 
 class Login extends Component {
     constructor() {
         super();
-        this.state = {currentStyle: 0};
+        this.state = {
+            currentStyle: 0,
+            redirect: false
+        };
     }
+    setRedirect = () => {
+        this.setState({
+          redirect: true
+        })
+    }
+    renderRedirect = () => {
+        if (this.state.redirect) {
+          return <Redirect to='/' />
+        }
+      }
+
     nextWaifu = () => {
         var n = this.state.currentStyle + 1;
         n = n % styles.length;
@@ -46,9 +59,9 @@ class Login extends Component {
                     AniClient
                 </div>
                 <div className="image-grid">
-                    <div><img className="arrow invert" src="https://cdn4.iconfinder.com/data/icons/icon-flat-icon-set/50/triangle-left-512.png" onClick={this.previousWaifu}/></div>
-                    <img className="login-image" src={styles[this.state.currentStyle].url} />
-                    <div><img className="arrow flip invert" src="https://cdn4.iconfinder.com/data/icons/icon-flat-icon-set/50/triangle-left-512.png" onClick={this.nextWaifu} /></div>
+                    <div><img className="arrow invert" src="https://cdn4.iconfinder.com/data/icons/icon-flat-icon-set/50/triangle-left-512.png" onClick={this.previousWaifu} alt ="wife"/></div>
+                    <img className="login-image" src={styles[this.state.currentStyle].url} alt ="wife" />
+                    <div><img className="arrow flip invert" src="https://cdn4.iconfinder.com/data/icons/icon-flat-icon-set/50/triangle-left-512.png" onClick={this.nextWaifu} alt ="wife" /></div>
                 </div>
                 <div className="login-fields">
                     <div className="login-username">
@@ -68,8 +81,9 @@ class Login extends Component {
                         <div className="login-label small">Save Password</div>
                     </div>
                 </div>
-                <div className="login-button">Login</div>
-                <div className="login-text small center">Don't have an account? <a href="#">Sign Up</a></div>
+                {this.renderRedirect()}
+                <div className="login-button" onClick={this.setRedirect} >Login</div>
+                <div className="login-text small center">Don't have an account? <a href="/">Sign Up</a></div>
             </div>
         );
     }
