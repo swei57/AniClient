@@ -52,18 +52,18 @@ class Login extends Component {
                 </div>
                 <div className="login-fields">
                     <div className="login-username">
-                        <div className="login-label large">Username</div>
+                        <div className="login-label large mid-size">Username</div>
                         <input className="login-input" type="text" placeholder="username" name="username" />
                     </div>
                     <div className="login-password">
-                        <div className="login-label large">Password</div>
+                        <div className="login-label large mid-size">Password</div>
                         <input className="login-input" type="password" placeholder="password" name="password" />
                     </div>
                     <div className="login-username-check">
                         <input className="login-input" type="checkbox" placeholder="password" name="password" />
                         <div className="login-label small">Save Username</div>
                     </div>
-                    <div className="login-password-password">
+                    <div className="login-password-check">
                         <input className="login-input" type="checkbox" placeholder="password" name="password" />
                         <div className="login-label small">Save Password</div>
                     </div>
