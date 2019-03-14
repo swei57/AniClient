@@ -14,7 +14,6 @@ ReactDOM.render((  <BrowserRouter>
   <Route exact path="/mainwindow" component={App} />
   </div>
 </BrowserRouter>), document.getElementById('root'));
-ReactDOM.render(<Page />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
