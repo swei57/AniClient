@@ -28,16 +28,17 @@
 .login-label {
     color: #e0e0e0;
     display: inline-block;
-    min-width: 120px;
     padding: 0;
 }
 
 .login-username {
     grid-area: un;
+    margin: auto;
 }
 
 .login-password {
     grid-area: pw;
+    margin: auto;
 }
 
 .login-username-check {
@@ -83,6 +84,10 @@
     grid-template-columns: 40px auto 40px;
     margin:auto;
     max-width: 400px;
+}
+
+.mid-size {
+    min-width: 120px;
 }
 
 .small {
