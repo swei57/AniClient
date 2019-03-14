@@ -11,7 +11,6 @@ class App extends Component {
      <div>
       <Header/>
       <SideBar/>
-      <Page/>
       <MainBody/>
      </div>
     );

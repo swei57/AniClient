@@ -8,7 +8,6 @@ class Page extends Component {
       
      <div className = "pagination">
        page
-     <SideBar />
        uwuwuwuwuwuss
      </div>
     );
