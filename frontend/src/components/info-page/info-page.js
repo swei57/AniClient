@@ -55,7 +55,7 @@ class InfoPage extends Component {
                 if(ep.attributes.thumbnail) {
                     html.push(
                         <div className="ep-preview">
-                            <img className="cover-img glass" src={ep.attributes.thumbnail.original} alt=""/>
+                            <img className="cover-img glass strech-height" src={ep.attributes.thumbnail.original} alt=""/>
                             <div className="ep-name">Episode {+n + 1}</div>
                         </div>
                     )
@@ -63,7 +63,7 @@ class InfoPage extends Component {
                 else {
                     html.push(
                         <div className="ep-preview">
-                            <img className="cover-img glass" src="http://denrakaev.com/wp-content/uploads/2015/03/no-image-800x511.png" alt=""/>
+                            <img className="cover-img glass strech-height" src="http://denrakaev.com/wp-content/uploads/2015/03/no-image-800x511.png" alt=""/>
                             <div className="ep-name">Episode {+n + 1}</div>
                         </div>
                     )
