@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./info-page.css"
 import SideBar from '../sidebar/sidebar';
 import Header from '../header/header';
+import SearchBar from '../searchbar/searchbar';
 
 class InfoPage extends Component {
 	constructor(props) {
@@ -25,7 +26,26 @@ class InfoPage extends Component {
                 <Header />
                 <div className="main-box">
                     <SideBar />
-                    <div>a</div>
+                    <div className="contents">
+                        <div className="sidebar-container"><SearchBar /></div>
+                        <div className="title">Title</div>
+                        <hr/>
+                        <div className="show-info">
+                            <div className="short-info">
+                                <img className="cover-img" src="https://media.kitsu.io/anime/poster_images/1/original.jpg?1431697256" alt=""/>
+                                <div>
+                                    <p>Rating: 8.40</p>
+                                    <p>Members: 100,000</p>
+                                </div>
+                            </div>
+                            <div className="studio-info">
+                                Studio Info
+                            </div>
+                            <div className="summary">
+                                Summary
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 		);

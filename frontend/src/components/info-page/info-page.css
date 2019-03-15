@@ -2,10 +2,38 @@
     display: flex;
     flex: 1;
     background-color: #303030;
+    color: white;
 }
 
 .holder {
     min-height: 100vh;
     display: flex;
 	flex-direction: column;
+}
+
+.sidebar-container {
+    margin: auto;
+}
+
+.contents {
+    flex-grow: 1;
+}
+
+.cover-img {
+    width: 100%;
+}
+
+.show-info {
+    display: flex;
+    margin: 30px;
+}
+
+.short-info {
+    width: 30%;
+    max-width: 250px;
+}
+
+.title {
+    color: #E0E0E0;
+    margin: 5px;
 }
