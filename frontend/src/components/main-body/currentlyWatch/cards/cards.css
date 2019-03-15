@@ -1,4 +1,6 @@
 .cards{
     width:180px;
     border-radius: 10px;
+    height: 260px;
+    cursor: pointer;
 }

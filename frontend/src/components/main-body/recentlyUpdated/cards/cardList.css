@@ -6,7 +6,8 @@
 }
 .cardList {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 180px);
+    grid-template-columns: repeat(auto-fill, 180px);
+    grid-template-rows: 325px 325px;
     /* grid-column-gap: 5px; */
     grid-gap: 15px;
     justify-content: space-between;
@@ -14,4 +15,7 @@
 .arrow{
     margin-top: 40px;
     width: 30px;
+}
+.arrowColumn{
+    cursor: pointer;
 }
