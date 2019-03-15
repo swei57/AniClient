@@ -37,11 +37,11 @@ class CardList extends Component {
     <h4 className = "ml-4 mt-4">Trending</h4>
     <hr></hr>
     <div className = "container-full allItems">   
-      <div onClick = {this.clickedLeftComponent.bind(this)} className="arrowColumn">
+      <div className="arrowColumn">
       <img className="arrow invert" src="https://cdn4.iconfinder.com/data/icons/icon-flat-icon-set/50/triangle-left-512.png" alt ="wife" />
       </div>
       <Card/>
-      <div onClick = {this.clickedRightComponent.bind(this)} className = "arrowColumn">
+      <div  className = "arrowColumn">
       <img className="arrow flip invert" src="https://cdn4.iconfinder.com/data/icons/icon-flat-icon-set/50/triangle-left-512.png" alt ="wife"/>
       </div>
       </div>

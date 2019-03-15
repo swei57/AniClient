@@ -5,17 +5,20 @@ import { Redirect } from 'react-router-dom';
 class Card extends Component {
   state = {
     redirect: false,
-    animeNames: []
+    animeNames: [],
+    showID:0
   }
-  setRedirect = () => {
+  setRedirect = (e) => {
     this.setState({
-      redirect: true
+      redirect: true,
+      showID: e.target.id
     })
   }
 
-  renderRedirect = (showID) => {
+  renderRedirect = () => {
     if (this.state.redirect) {
-      return <Redirect to={`/show/${showID}`} />
+
+      return <Redirect to={`/show/${this.state.showID}`} />
     }
   }
 
@@ -39,14 +42,17 @@ class Card extends Component {
     const animeArray = this.state.animeNames.map((anime) => {
       return(
       <div>
-      <p className = "animeTitle">{anime.attributes.canonicalTitle}</p>
-      <img className = "cards" alt = 'anime' src = {anime.attributes.posterImage.original}/>
+      <p className = "animeTitle" >{anime.attributes.canonicalTitle}</p>
+      <img onClick={this.setRedirect} className = "cards" alt = 'anime' src = {anime.attributes.posterImage.original} id = {anime.id}/>
       </div>
       );
     });
 
     return (
-      <div className ="cList">{animeArray}</div>
+      <div className ="cList">
+      {this.renderRedirect()}
+      {animeArray}
+      </div>
     );
   }
 }
