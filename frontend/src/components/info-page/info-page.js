@@ -146,6 +146,12 @@ class InfoPage extends Component {
                                 Episode List
                             </div>
                             <hr/>
+                            <div className="slider-box">
+                                <label class="switch">
+                                    <input type="checkbox" name="no-blur" />
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
                             <div className="ep-list">
                                 {this.displayEpisodes()}
                             </div>
