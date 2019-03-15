@@ -23,6 +23,12 @@ Router.post('/login', (req, res) => {
     var username = req.body.username;
     var password = req.body.password;
 
+    if(!username || !password)
+    {
+        res.json({failure: 'Need both username and password'});
+        return;
+    }
+
     console.log(`Signing in with credentials ${username} ${password}.`);
 
     // Query the database to find the username/password entry
@@ -41,9 +47,10 @@ Router.post('/login', (req, res) => {
             if(bcrypt.compareSync(password, user.password)){
                 // Correct password
                 console.log('User signed in.');
-                res.json({success: 'These credentials work!'}); // TEST
-                // var token = jwt.sign({thisUser}, 'secretkey', {expiresIn: "45m"}); // sessions last 45 minutes by default.
-                // res.json({message: token, auth: thisUser.authLevel, email: thisUser.email});
+                var token = jwt.sign({user}, SECRET_KEY, {expiresIn: "45m"}); // sessions last 45 minutes by default.
+                console.log(user.id);
+                console.log(user.username);
+                res.json({sessionToken: token, userId: user.id, username: user.username});
             } else {
                 // incorrect password
                 console.log('User entered wrong password');
@@ -57,6 +64,12 @@ Router.post('/login', (req, res) => {
 Router.post('/signup', (req, res) => {
     var username = req.body.username;
     var password = req.body.password;
+
+    if(!username || !password)
+    {
+        res.json({failure: 'Need both username and password'});
+        return;
+    }
 
     // First check the database to see if this username is taken
     const checkQuery = `SELECT * FROM users WHERE username='${username}'`;
@@ -82,5 +95,8 @@ Router.post('/signup', (req, res) => {
         }
     });
 });
+
+
+
 
 module.exports = Router;
