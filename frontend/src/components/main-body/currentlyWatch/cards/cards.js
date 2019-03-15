@@ -4,9 +4,11 @@ import './cards.css';
 class Card extends Component {
 
   render() {
+    const {name, imageURL} = this.props;
     return (
         <div>
-        <img className = "cards" alt = 'anime' src = "https://cdn.myanimelist.net/images/anime/1068/97169.jpg"/>
+        <p>{name}</p>
+        <img className = "cards" alt = 'anime' src = {imageURL}/>
         </div>
     );
   }
