@@ -10,9 +10,9 @@ import InfoPage from './components/info-page/info-page';
 
 ReactDOM.render((  <BrowserRouter>
   <div>
-  <Route exact path="/" component={Login} />
-  <Route exact path="/mainwindow" component={App} />
-  <Route exact path="/show/:id" component={InfoPage} />
+    <Route exact path="/" component={Login} />
+    <Route exact path="/mainwindow" component={App} />
+    <Route exact path="/show/:id" component={InfoPage} />
   </div>
 </BrowserRouter>), document.getElementById('root'));
 
