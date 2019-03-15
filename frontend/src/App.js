@@ -22,19 +22,15 @@ class App extends Component {
 
   render() {
     return (
-     <div>
-      <Header/>
-       <div className = "row">
-      <div className = "col-5">
-      <SideBar/>
+     <div className="holder">
+        <Header />
+      <div className="main-box">
+        <SideBar />
+        <div className="contents">
+        <MainBody/>
+        </div>
       </div>
-      <div className = "col-7">
-      <Page/>
-      <SearchBar searchChange = {this.onSearchChange}/>
-      </div>
-      </div>
-      <MainBody/>
-     </div>
+    </div>
     );
   }
 }

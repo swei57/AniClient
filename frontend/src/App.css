@@ -1,0 +1,16 @@
+.main-box {
+    display: flex;
+    flex: 1;
+    background-color: #303030;
+    color: white;
+}
+
+.holder {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.contents {
+    /* flex-grow: 1; */
+    width: 100%;
+}

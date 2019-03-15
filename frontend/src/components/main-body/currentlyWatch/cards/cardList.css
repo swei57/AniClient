@@ -1,0 +1,15 @@
+.allItems{
+    display: grid;
+    grid-template-columns: 30px auto 30px;
+}
+.cardList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 180px);
+    /* grid-column-gap: 5px; */
+    grid-gap: 15px;
+    justify-content: space-between;
+}
+.arrow{
+    margin-top: 40px;
+    width: 30px;
+}
