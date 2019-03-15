@@ -49,6 +49,8 @@ class InfoPage extends Component {
             for(var n in this.state.episodes) {
                 var ep = this.state.episodes[n];
                 console.log(ep);
+                if(ep.attributes.airdate == null || new Date(ep.attributes.airdate) > new Date())
+                    continue;
                 
                 if(ep.attributes.thumbnail) {
                     html.push(
