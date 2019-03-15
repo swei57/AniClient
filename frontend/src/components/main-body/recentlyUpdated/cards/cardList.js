@@ -9,7 +9,7 @@ class CardList extends Component {
 
 
     <div>
-    <h4 className = "ml-4 mt-4">Currently Watching</h4>
+    <h4 className = "ml-4 mt-4">Recently Updated</h4>
     <hr></hr>
     <div className = "container-full allItems">   
       <img className="arrow invert" src="https://cdn4.iconfinder.com/data/icons/icon-flat-icon-set/50/triangle-left-512.png" alt ="wife" />
