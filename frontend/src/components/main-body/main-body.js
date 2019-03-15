@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import "./main-body.css";
+import CurrentlyWatch from './currentlyWatch/currentlyWatch';
+
 class MainBody extends Component {
   render() {
     document.body.style.backgroundColor = "#303030";
     return (
      <div className = "mainpage-body">
-       main page
+       <CurrentlyWatch/>
      </div>
     );
   }
