@@ -7,7 +7,7 @@ class SideBar extends Component {
         this.state = {width: 50, expanded: false};
 	}
 	toggleNav = () => {
-		if(this.state.width == 50) {
+		if(this.state.width ===50) {
 			this.setState({width: 300, expanded: true});
 		}
 		else {
@@ -48,7 +48,7 @@ class SideBar extends Component {
 			}
 			else {
 				display.push(
-					<a className="nav-item" onClick={() => this.reroute(item.newRoute)}><img src={item.icon} className="nav-icon invert" /></a>
+					<a className="nav-item" onClick={() => this.reroute(item.newRoute)}><img src={item.icon} className="nav-icon invert" alt ="icon"/></a>
 				);
 			}
 			
@@ -56,8 +56,8 @@ class SideBar extends Component {
 		}
 
 		return (
-			<div id="mySidenav" class="sidenav" style={navStyle}>
-				<a className="nav-item closebtn" onClick={this.toggleNav}><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/220px-Hamburger_icon.svg.png" className="nav-icon invert" /></a>
+			<div id="mySidenav" className="sidenav" style={navStyle}>
+				<a className="nav-item closebtn" onClick={this.toggleNav} ><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/220px-Hamburger_icon.svg.png" className="nav-icon invert" alt = "icon"/></a>
 				<hr />
 				{display}
 			</div>
