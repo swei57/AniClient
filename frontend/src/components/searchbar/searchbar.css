@@ -3,8 +3,17 @@
 }
 .searchbar{
     width: 325px;
-    border: none;
     background: #303030;
-    border-style: solid;
-    border-width: 1px;
+    border: 1px solid #5c5c5c;
+}
+
+.p-2 {
+    margin: auto;
+}
+
+.test {
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
