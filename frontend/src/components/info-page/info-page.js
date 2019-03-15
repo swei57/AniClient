@@ -42,7 +42,11 @@ class InfoPage extends Component {
                                 Studio Info
                             </div>
                             <div className="summary">
-                                Summary
+                                Synopsis
+                                <div className="summary-text">
+                                    BLAH BLAH BLAH
+                                </div>
+
                             </div>
                         </div>
                     </div>
