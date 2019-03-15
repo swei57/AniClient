@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./main-body.css";
 import CurrentlyWatch from './currentlyWatch/currentlyWatch';
 import RecentlyUpdated from './recentlyUpdated/recentlyUpdated';
+import Trending from './trending/trending';
 
 class MainBody extends Component {
   render() {
@@ -10,6 +11,7 @@ class MainBody extends Component {
      <div className = "mainpage-body">
        <CurrentlyWatch/>
        <RecentlyUpdated/>
+       <Trending/>
      </div>
     );
   }
