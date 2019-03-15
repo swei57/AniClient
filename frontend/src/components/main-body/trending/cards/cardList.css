@@ -1,0 +1,12 @@
+.allItems{
+    padding-top: 15px;
+    display: grid;
+    grid-template-columns: 30px auto 30px;
+}
+.arrow{
+    margin-top: 40px;
+    width: 30px;
+}
+.arrowColumn{
+    cursor: pointer;
+}
