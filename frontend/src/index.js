@@ -1,12 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import Login from './components/login/login';
+import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter, Route } from 'react-router-dom';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import InfoPage from './components/info-page/info-page';
 
-ReactDOM.render(<Login />, document.getElementById('root'));
+ReactDOM.render((  <BrowserRouter>
+  <div>
+    <Route exact path="/" component={Login} />
+    <Route exact path="/mainwindow" component={App} />
+    <Route exact path="/show/:id" component={InfoPage} />
+  </div>
+</BrowserRouter>), document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
