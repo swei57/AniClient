@@ -26,17 +26,29 @@
 
 .show-info {
     display: flex;
+    /* display: grid; */
+    /* grid-template-columns: repeat(3, auto);
+    grid-auto-columns: minmax(150px, auto); */
     margin: 30px;
     max-height: 300px;
+}
+
+@media(max-width: 750px) {
+    .show-info {
+        flex-wrap: wrap;
+        max-height: 1000px;
+    }
 }
 
 .short-info {
     width: 10%;
     min-width: 150px;
+    margin-right: 30px;
 }
 
 .studio-info {
-    margin: 0 30px;
+    /* margin: 0 30px; */
+    margin-right: 30px;
     width: 15%;
     min-width: 200px;
 }
