@@ -3,15 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Login from './components/login/login';
 import App from './App';
-import Page from './components/page/page';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Route } from 'react-router-dom';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import InfoPage from './components/info-page/info-page';
 
 ReactDOM.render((  <BrowserRouter>
   <div>
-  <Route exact path="/" component={Login} />
-  <Route exact path="/mainwindow" component={App} />
+    <Route exact path="/" component={Login} />
+    <Route exact path="/mainwindow" component={App} />
+    <Route exact path="/show/:id" component={InfoPage} />
   </div>
 </BrowserRouter>), document.getElementById('root'));
 
