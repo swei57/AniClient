@@ -49,11 +49,13 @@ class InfoPage extends Component {
             for(var n in this.state.episodes) {
                 var ep = this.state.episodes[n];
                 console.log(ep);
+                if(ep.attributes.airdate == null || new Date(ep.attributes.airdate) > new Date())
+                    continue;
                 
                 if(ep.attributes.thumbnail) {
                     html.push(
                         <div className="ep-preview">
-                            <img className="cover-img glass" src={ep.attributes.thumbnail.original} alt=""/>
+                            <img className="cover-img glass strech-height" src={ep.attributes.thumbnail.original} alt=""/>
                             <div className="ep-name">Episode {+n + 1}</div>
                         </div>
                     )
@@ -61,7 +63,7 @@ class InfoPage extends Component {
                 else {
                     html.push(
                         <div className="ep-preview">
-                            <img className="cover-img glass" src="http://denrakaev.com/wp-content/uploads/2015/03/no-image-800x511.png" alt=""/>
+                            <img className="cover-img glass strech-height" src="http://denrakaev.com/wp-content/uploads/2015/03/no-image-800x511.png" alt=""/>
                             <div className="ep-name">Episode {+n + 1}</div>
                         </div>
                     )
@@ -146,6 +148,12 @@ class InfoPage extends Component {
                                 Episode List
                             </div>
                             <hr/>
+                            <div className="slider-box">
+                                <label class="switch">
+                                    <input type="checkbox" name="no-blur" />
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
                             <div className="ep-list">
                                 {this.displayEpisodes()}
                             </div>
