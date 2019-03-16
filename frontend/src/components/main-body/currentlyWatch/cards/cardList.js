@@ -84,7 +84,7 @@ library: [{
   }
 
   clickedRightComponent = () => {
-    if(this.state.library.slice(this.state.currentAnimeVal,this.state.pageNumber* 10).length === 10){
+    if(this.state.library.slice((this.state.currentAnimeVal),(this.state.pageNumber )* 10).length === 10){
       this.setState({
         pageNumber: this.state.pageNumber + 1,
         currentAnimeVal: this.state.currentAnimeVal + 10
@@ -109,7 +109,7 @@ library: [{
   });
   return (
   <div>
-  <h4 className = "ml-4 mt-4">Currently Watching</h4>
+  <h4 className = "ml-4 mt-4" id = "currentlyWatch">Currently Watching</h4>
   <hr></hr>
   <div className = "container-full allItems">   
     <div onClick = {this.clickedLeftComponent.bind(this)} className="arrowColumn">

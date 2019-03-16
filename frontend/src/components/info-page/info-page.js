@@ -75,7 +75,7 @@ class InfoPage extends Component {
     }
 	render() {
         var display;
-        if(this.state.data != undefined) {
+        if(this.state.data !== undefined) {
             display = <div className="holder">
                 <Header />
                 <div className="main-box">
