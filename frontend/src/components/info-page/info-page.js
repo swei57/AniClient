@@ -8,6 +8,7 @@ class InfoPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            "blur": true
         };
     }
     componentDidMount() {
@@ -19,13 +20,14 @@ class InfoPage extends Component {
                 return;
             }
             response.json().then((data) => {
-                this.setState({"data": data.data})
+                this.setState({"data": data.data});
                 var epUrl = url + "/episodes";
                 this.fetchEpisodes(epUrl, []);
             });
         })
     }
     fetchEpisodes(url, array) {
+        console.log(url);
         fetch(url).then((response) => {
             if(response.status !== 200) {
                 console.log("Could not fetch episode");
@@ -43,7 +45,10 @@ class InfoPage extends Component {
             
         });
     }
-    displayEpisodes() {
+    swapBlur = ()=> {
+        this.setState({"blur": !this.state.blur});
+    }
+    displayEpisodes = () => {
         var html = [];
         if(this.state.episodes) {
             for(var n in this.state.episodes) {
@@ -53,20 +58,41 @@ class InfoPage extends Component {
                     continue;
                 
                 if(ep.attributes.thumbnail) {
-                    html.push(
-                        <div className="ep-preview">
-                            <img className="cover-img glass strech-height" src={ep.attributes.thumbnail.original} alt=""/>
-                            <div className="ep-name">Episode {+n + 1}</div>
-                        </div>
-                    )
+                    if(this.state.blur) {
+                        html.push(
+                            <div className="ep-preview">
+                                <img className="cover-img glass strech-height" src={ep.attributes.thumbnail.original} alt=""/>
+                                <div className="ep-name">{+n + 1}</div>
+                            </div>
+                        )
+                    }
+                    else {
+                        html.push(
+                            <div className="ep-preview">
+                                <img className="cover-img strech-height" src={ep.attributes.thumbnail.original} alt=""/>
+                                <div className="ep-name">{+n + 1}</div>
+                            </div>
+                        )
+                    }
+                    
                 }
                 else {
-                    html.push(
-                        <div className="ep-preview">
-                            <img className="cover-img glass strech-height" src="http://denrakaev.com/wp-content/uploads/2015/03/no-image-800x511.png" alt=""/>
-                            <div className="ep-name">Episode {+n + 1}</div>
-                        </div>
-                    )
+                    if(this.state.blur) {
+                        html.push(
+                            <div className="ep-preview">
+                                <img className="cover-img glass strech-height" src="http://denrakaev.com/wp-content/uploads/2015/03/no-image-800x511.png" alt=""/>
+                                <div className="ep-name">{+n + 1}</div>
+                            </div>
+                        )
+                    }
+                    else {
+                        html.push(
+                            <div className="ep-preview">
+                                <img className="cover-img strech-height" src="http://denrakaev.com/wp-content/uploads/2015/03/no-image-800x511.png" alt=""/>
+                                <div className="ep-name">{+n + 1}</div>
+                            </div>
+                        )
+                    }
                 }
                 
             }
@@ -151,8 +177,11 @@ class InfoPage extends Component {
                             <div className="slider-box">
                                 <label class="switch">
                                     <input type="checkbox" name="no-blur" />
-                                    <span class="slider round"></span>
+                                    <span class="slider round" onClick={this.swapBlur}></span>
                                 </label>
+                                <div className="show-label">
+                                    Disable blur
+                                </div>
                             </div>
                             <div className="ep-list">
                                 {this.displayEpisodes()}

@@ -102,12 +102,12 @@
 }
 
 .ep-name {
-    font-size: 14px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 28px;
+    font-family: fantasy;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    top: 0;
+    right: 0;
+    transform: translateX(-50%);
 }
 
 .ep-list {
@@ -125,6 +125,11 @@
 
 .strech-height {
     height: 100%;
+}
+
+.show-label {
+    display: inline-block;
+    margin: 0 5px;
 }
 
 /* Slider */
