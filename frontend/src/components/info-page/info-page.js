@@ -180,7 +180,7 @@ class InfoPage extends Component {
                                     <span class="slider round" onClick={this.swapBlur}></span>
                                 </label>
                                 <div className="show-label">
-                                    Disable blur
+                                    Toggle blur
                                 </div>
                             </div>
                             <div className="ep-list">
