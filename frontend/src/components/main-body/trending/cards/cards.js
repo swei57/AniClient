@@ -6,7 +6,9 @@ class Card extends Component {
   state = {
     redirect: false,
     animeNames: [],
-    showID:0
+    showID:0,
+    pageNumber: 1,
+    currentAnimeVal: 0
   }
   setRedirect = (e) => {
     this.setState({
@@ -22,15 +24,15 @@ class Card extends Component {
     }
   }
 
+  
   componentDidMount() {
-    fetch('https://kitsu.io/api/edge/trending/anime?limit=20')
+    fetch('https://kitsu.io/api/edge/trending/anime?limit=100')
     .then(res => res.json())
     .then(
       (result) => {
         this.setState({
           animeNames: result.data
         })
-        console.log(this.state.animeNames);
       },
       (error) => {
        console.log(error);
@@ -38,8 +40,27 @@ class Card extends Component {
     ) 
   }
 
+  clickedRightComponent = () => {
+    if(this.state.animeNames.slice((this.state.currentAnimeVal + 10),(this.state.pageNumber+1)* 10).length === 10){
+      this.setState({
+        pageNumber: this.state.pageNumber + 1,
+        currentAnimeVal: this.state.currentAnimeVal + 10
+      });
+    }
+  }
+  clickedLeftComponent = () => {
+    if(this.state.pageNumber !== 1){
+      this.setState({
+        pageNumber: this.state.pageNumber - 1,
+        currentAnimeVal: this.state.currentAnimeVal - 10
+      });
+    }
+  }
+
+
   render() {
-    const animeArray = this.state.animeNames.map((anime) => {
+    
+    const animeArray = this.state.animeNames.slice(this.state.currentAnimeVal, this.state.pageNumber * 10).map((anime) => {
       return(
       <div>
       <p className = "animeTitle" >{anime.attributes.canonicalTitle}</p>
@@ -48,10 +69,22 @@ class Card extends Component {
       );
     });
 
-    return (
+    return (   
+      <div className = "container-full allItems">   
+
+    <div onClick = {this.clickedLeftComponent.bind(this)}  className="arrowColumn">
+    <img className="arrow invert" src="https://cdn4.iconfinder.com/data/icons/icon-flat-icon-set/50/triangle-left-512.png" alt ="wife" />
+    </div>
+
       <div className ="cList">
       {this.renderRedirect()}
       {animeArray}
+      </div>
+
+      <div  onClick = {this.clickedRightComponent.bind(this)} className = "arrowColumn">
+      <img className="arrow flip invert" src="https://cdn4.iconfinder.com/data/icons/icon-flat-icon-set/50/triangle-left-512.png" alt ="wife"/>
+      </div>
+
       </div>
     );
   }
