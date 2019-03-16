@@ -27,6 +27,8 @@ class App extends Component {
       <div className="main-box">
         <SideBar />
         <div className="contents">
+        <Page/>
+        <SearchBar/>
         <MainBody/>
         </div>
       </div>
