@@ -3,6 +3,7 @@ import './cards.css';
 import { Redirect } from 'react-router-dom';
 
 class Card extends Component {
+  // The state variables of the card object
   state = {
     redirect: false,
     animeNames: [],
@@ -10,6 +11,7 @@ class Card extends Component {
     pageNumber: 1,
     currentAnimeVal: 0
   }
+
   setRedirect = (e) => {
     this.setState({
       redirect: true,
@@ -17,6 +19,7 @@ class Card extends Component {
     })
   }
 
+  // Redirect to the info-page for the showID.
   renderRedirect = () => {
     if (this.state.redirect) {
 
@@ -24,7 +27,7 @@ class Card extends Component {
     }
   }
 
-  
+  // Fetch the top 100 trending anime from kitsu, store their names in the animeNames array
   componentDidMount() {
     fetch('https://kitsu.io/api/edge/trending/anime?limit=100')
     .then(res => res.json())

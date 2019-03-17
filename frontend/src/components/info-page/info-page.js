@@ -11,6 +11,9 @@ class InfoPage extends Component {
             "blur": true
         };
     }
+
+    // Here we take the showID from the url to fetch the show's information
+    // and then call to collect episode information
     componentDidMount() {
         const id = this.props.match.params.id;
         var url = 'https://kitsu.io/api/edge/anime/' + id;
@@ -26,6 +29,8 @@ class InfoPage extends Component {
             });
         })
     }
+
+    // fetch episode information and store in local 'episodes' state array
     fetchEpisodes(url, array) {
         console.log(url);
         fetch(url).then((response) => {
@@ -51,12 +56,13 @@ class InfoPage extends Component {
     displayEpisodes = () => {
         var html = [];
         if(this.state.episodes) {
-            for(var n in this.state.episodes) {
+            for(var n in this.state.episodes) { // iterate over all the episodes
                 var ep = this.state.episodes[n];
                 console.log(ep);
                 if(ep.attributes.airdate == null || new Date(ep.attributes.airdate) > new Date())
-                    continue;
+                    continue; // ignore episodes that have not yet aired
                 
+                // Display blurred/unblurred thumbnails for episodes
                 if(ep.attributes.thumbnail) {
                     if(this.state.blur) {
                         html.push(
@@ -65,8 +71,7 @@ class InfoPage extends Component {
                                 <div className="ep-name">{+n + 1}</div>
                             </div>
                         )
-                    }
-                    else {
+                    } else {
                         html.push(
                             <div className="ep-preview">
                                 <img className="cover-img strech-height" src={ep.attributes.thumbnail.original} alt=""/>
@@ -75,8 +80,7 @@ class InfoPage extends Component {
                         )
                     }
                     
-                }
-                else {
+                } else {
                     if(this.state.blur) {
                         html.push(
                             <div className="ep-preview">
@@ -84,8 +88,7 @@ class InfoPage extends Component {
                                 <div className="ep-name">{+n + 1}</div>
                             </div>
                         )
-                    }
-                    else {
+                    } else {
                         html.push(
                             <div className="ep-preview">
                                 <img className="cover-img strech-height" src="http://denrakaev.com/wp-content/uploads/2015/03/no-image-800x511.png" alt=""/>
