@@ -54,6 +54,7 @@ class WatchEpisode extends Component{
                         episodeDetails: array[this.state.episodeNo-1],
                         episodes: array
                     });
+                    console.log(this.state.episodeDetails);
                 }
             });
             
@@ -61,9 +62,45 @@ class WatchEpisode extends Component{
     }
 
     render() {
-        return(
-            <h3>{this.state.title}: Episode {this.state.episodeNo} - {this.state.episodeDetails.attributes.canonicalTitle}</h3>
-        );
+
+        var display;
+        if(this.state.title !== '') {
+            display = <div className="holder">
+                <Header />
+                <div className="main-box">
+                    <SideBar />
+                    <div className="contents">
+                        <div className="sidebar-container"><SearchBar /></div>
+                        <h3>{this.state.title}: Episode {this.state.episodeNo} - {this.state.episodeDetails.attributes.canonicalTitle}</h3>
+                        <hr/>
+                        <div className="episodes">
+                            <div className="title">
+                                Episode List
+                            </div>
+                            <hr/>
+                            <div className="slider-box">
+                                <label class="switch">
+                                    <input type="checkbox" name="no-blur" />
+                                    <span class="slider round" onClick={this.swapBlur}></span>
+                                </label>
+                                <div className="show-label">
+                                    Toggle blur
+                                </div>
+                            </div>
+                            {/* <div className="ep-list">
+                                {this.displayEpisodes()}
+                            </div> */}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else {
+            display = <div>Loading data, please hold</div>
+        }
+		return (
+            display
+		);
     }
 
 }
