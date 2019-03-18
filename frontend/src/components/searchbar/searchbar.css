@@ -28,3 +28,6 @@
     white-space: nowrap;
     overflow: hidden;
 }
+.searchRes{
+    text-decoration: none !important;
+}
