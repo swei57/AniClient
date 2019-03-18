@@ -8,18 +8,6 @@ import Page from './components/page/page';
 
 class App extends Component {
 
-  constructor(){
-    super()
-    this.state ={
-      anime: {},
-    searchfield: ''
-    }
-  }
-
-  onSearchChange(event){
-    console.log(event.target.value);
-  }
-
   render() {
     return (
      <div className="holder">
@@ -28,7 +16,7 @@ class App extends Component {
         <SideBar />
         <div className="contents">
         <Page/>
-        <SearchBar searchChange = {this.onSearchChange}/>
+        <SearchBar/>
         <MainBody/>
         </div>
       </div>
