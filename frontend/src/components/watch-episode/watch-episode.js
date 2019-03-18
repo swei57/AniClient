@@ -11,7 +11,7 @@ class WatchEpisode extends Component{
         this.state={
             title:'',
             episodeNo: 0,
-            episodeDetails: {},
+            episodeDetails: {attributes: {canonicalTitle: ''}}, // There has to be a better way to do this.
             episodes: []
         };
     }
@@ -19,7 +19,6 @@ class WatchEpisode extends Component{
     componentDidMount(){
         const id = this.props.match.params.id; // show id from page route
         var url = 'https://kitsu.io/api/edge/anime/' + id;
-        console.log('WATCHEPISODEWOOTWOOT');
 
         // Get and set both the show title and the episode number
         fetch(url).then((response) => {
@@ -29,10 +28,9 @@ class WatchEpisode extends Component{
             }
             response.json().then((data) => {
                 this.setState({
-                    title: data.attributes.canonicalTitle,
+                    title: data.data.attributes.canonicalTitle,
                     episodeNo: this.props.match.params.epNo
                 });
-                console.log('WATCHEPISODEWOOTWOOT');
                 var epUrl = url + "/episodes";
                 this.fetchEpisodes(epUrl, []);
             });
@@ -64,7 +62,7 @@ class WatchEpisode extends Component{
 
     render() {
         return(
-            <h3>{this.state.title}: Episode {this.state.episodeNo} - {this.episodeDetails.canonicalTitle}</h3>
+            <h3>{this.state.title}: Episode {this.state.episodeNo} - {this.state.episodeDetails.attributes.canonicalTitle}</h3>
         );
     }
 

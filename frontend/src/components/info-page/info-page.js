@@ -60,8 +60,8 @@ class InfoPage extends Component {
 
     renderRedirect = () => {
         if (this.state.redirect) {
-
-        return <Redirect to={`/show/${this.state.showId}/episode/${this.state.epToSee}`} />
+            console.log(this.state);
+        return <Redirect to={`/show/${this.state.showId}/${this.state.epToSee}`} />
         }
     }
     watchEpisode = (e) => {
