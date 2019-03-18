@@ -3,9 +3,10 @@ import CardList from './cards/cardList';
 
 class Trending extends Component {
   render() {
+    const {trendingAnime} = this.props;
     return (
      <div>
-     <CardList/>
+     <CardList filteredAnime = {trendingAnime}/>
      </div>
     );
   }
