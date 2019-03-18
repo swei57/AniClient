@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 class Card extends Component {
   state = {
     redirect: false,
+    animeNames: [],
     showID:0,
     pageNumber: 1,
     currentAnimeVal: 0
@@ -22,9 +23,25 @@ class Card extends Component {
       return <Redirect to={`/show/${this.state.showID}`} />
     }
   }
- 
+
+  
+  componentDidMount() {
+    fetch('https://kitsu.io/api/edge/trending/anime?limit=100')
+    .then(res => res.json())
+    .then(
+      (result) => {
+        this.setState({
+          animeNames: result.data
+        })
+      },
+      (error) => {
+       console.log(error);
+      }
+    ) 
+  }
+
   clickedRightComponent = () => {
-    if(this.props.anime.slice((this.state.currentAnimeVal + 10),(this.state.pageNumber+1)* 10).length > 0){
+    if(this.state.animeNames.slice((this.state.currentAnimeVal + 10),(this.state.pageNumber+1)* 10).length > 0){
       this.setState({
         pageNumber: this.state.pageNumber + 1,
         currentAnimeVal: this.state.currentAnimeVal + 10
@@ -42,10 +59,8 @@ class Card extends Component {
 
 
   render() {
-    const {anime} = this.props;
-    console.log(anime);
-
-    const animeArray = anime.slice(this.state.currentAnimeVal, this.state.pageNumber * 10).map((anime) => {
+    
+    const animeArray = this.state.animeNames.slice(this.state.currentAnimeVal, this.state.pageNumber * 10).map((anime) => {
       return(
       <div>
       <p className = "animeTitle" >{anime.attributes.canonicalTitle}</p>
