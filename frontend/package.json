@@ -6,6 +6,7 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "electron": "^4.0.8",
+    "purecss": "^1.0.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-router-dom": "^4.3.1",
