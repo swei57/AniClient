@@ -29,6 +29,11 @@ class SearchBar extends Component{
         }
     ) 
     }
+    clearElements = () => {
+        this.setState({
+            foundShows: []
+        });
+    }
 
   render(){
     return(
@@ -36,13 +41,17 @@ class SearchBar extends Component{
            <div className="test">
                <input className = "text-light searchbar" type = "search" 
                placeholder ="Search Anime "
-               onChange =  {this.onSearchChange}></input> 
+               onChange =  {this.onSearchChange}
+               onBlur = {this.clearElements} ></input> 
                <i className="searchIcon fas fa-search ml-3" aria-hidden="true"></i>
+                <div className="searchResults">
                 {this.state.foundShows.slice(0,10).map((show) => (
                     <div className = "filterShow">
                     <a className="searchRes"href ={`/show/${show.id}`}>{show.attributes.canonicalTitle}</a>
                     </div>
                 ))}
+                </div>
+                
            </div>
         </div>
    );
