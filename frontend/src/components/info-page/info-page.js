@@ -6,6 +6,7 @@ import SearchBar from '../searchbar/searchbar';
 import {Redirect} from 'react-router-dom';
 
 import ShowInfo from './show-info/show-info';
+import WatchEpisode from './watch-episode/watch-episode';
 
 class InfoPage extends Component {
     constructor(props) {
@@ -14,7 +15,8 @@ class InfoPage extends Component {
             "blur": true,
             showId: 0,
             redirect: false,
-            epToSee: 0
+            epToSee: 0,
+            episodeDetails: []
         };
     }
 
@@ -22,6 +24,7 @@ class InfoPage extends Component {
     // and then call to collect episode information
     componentDidMount() {
         const id = this.props.match.params.id;
+
         var url = 'https://kitsu.io/api/edge/anime/' + id;
         fetch(url).then((response) => {
             if(response.status !== 200) {
@@ -51,8 +54,19 @@ class InfoPage extends Component {
                 }
                 else {
                     this.setState({"episodes": array});
+                    console.log(this.state.episodes);
+
+                    // If the specify the episode to see in the route to this page, set this variable
+                    // so we can display the video player immediately.
+                    if(this.props.match.params.epNo >= 1 && this.props.match.params.epNo <= this.state.episodes.length)
+                    {
+                        this.setState({epToSee: this.props.match.params.epNo});
+                        this.setState({episodeDetails: this.state.episodes[this.state.epToSee-1]});
+                    }
                 }
             });
+
+        
             
         });
     }
@@ -62,14 +76,14 @@ class InfoPage extends Component {
 
     renderRedirect = () => {
         if (this.state.redirect) {
-            console.log(this.state);
+            console.log(this.state.epToSee);
         return <Redirect to={`/show/${this.state.showId}/${this.state.epToSee}`} />
         }
     }
     watchEpisode = (e) => {
         this.setState({
             epToSee: e.target.id,
-            redirect: true
+            redirect: true,
         });
     }
 
@@ -136,7 +150,13 @@ class InfoPage extends Component {
                 <SideBar />
                 <div className="contents">
                 <div className="sidebar-container"><SearchBar /></div>
-                {(this.state.epToSee == 0) ? <ShowInfo showData={this.state.data} renderRedirect={this.renderRedirect}/> : <h2>Waching an episode.</h2>}
+
+                {this.renderRedirect()}
+
+                { (this.state.epToSee == 0) ? <ShowInfo showData={this.state.data}/> : 
+                <WatchEpisode showTitle={this.state.data.attributes.canonicalTitle} 
+                episodeDetails={this.state.episodes[this.state.epToSee -1]}/> }
+
                         <div className="episodes">
                             <div className="title">
                                 Episode List

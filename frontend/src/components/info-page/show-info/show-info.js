@@ -1,7 +1,4 @@
 import React, {Component} from 'react';
-import SideBar from '../../sidebar/sidebar';
-import Header from '../../header/header';
-import SearchBar from '../../searchbar/searchbar';
 
 class ShowInfo extends Component {
     constructor(props){
@@ -11,11 +8,8 @@ class ShowInfo extends Component {
         }
     }
 
-
     render() {
         var display;
-        
-        
         if(this.state.data !== undefined)
         {
         display =<div>
