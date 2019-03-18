@@ -5,7 +5,7 @@ class Trending extends Component {
   render() {
     return (
      <div>
-     <CardList/>
+     <CardList />
      </div>
     );
   }

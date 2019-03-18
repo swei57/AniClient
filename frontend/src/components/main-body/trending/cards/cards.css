@@ -3,6 +3,15 @@
     border-radius: 10px;
     cursor: pointer;
     height: 260px;
+    opacity: 1;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.cards:hover{
+    opacity: .5;
+    -moz-box-shadow: 0 0 10px #ccc;
+    -webkit-box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 0 10px #ccc;
 }
 
 .cList {
