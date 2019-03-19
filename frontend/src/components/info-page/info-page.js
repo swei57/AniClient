@@ -3,10 +3,14 @@ import "./info-page.css"
 import SideBar from '../sidebar/sidebar';
 import Header from '../header/header';
 import SearchBar from '../searchbar/searchbar';
+<<<<<<< HEAD
 import {Redirect} from 'react-router-dom';
 
 import ShowInfo from './show-info/show-info';
 import WatchEpisode from './watch-episode/watch-episode';
+=======
+import ScrollToTop from '../utils/scroll-to-top';
+>>>>>>> master
 
 class InfoPage extends Component {
     constructor(props) {
@@ -176,6 +180,7 @@ class InfoPage extends Component {
                             </div>
                         </div>
                     </div>
+                    <ScrollToTop/>
                 </div>
             </div>
         }
@@ -185,7 +190,7 @@ class InfoPage extends Component {
 		return (
             display
 		);
-	}
+    }
 }
 
 export default InfoPage;

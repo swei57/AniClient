@@ -44,7 +44,7 @@ class Card extends Component {
   }
 
   clickedRightComponent = () => {
-    if(this.state.animeNames.slice((this.state.currentAnimeVal + 10),(this.state.pageNumber+1)* 10).length === 10){
+    if(this.state.animeNames.slice((this.state.currentAnimeVal + 10),(this.state.pageNumber+1)* 10).length > 0){
       this.setState({
         pageNumber: this.state.pageNumber + 1,
         currentAnimeVal: this.state.currentAnimeVal + 10

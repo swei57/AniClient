@@ -53,7 +53,7 @@ class SideBar extends Component {
 			}
 			else {
 				display.push(
-					<a className="nav-item" href = '#nothing'><img src={item.icon} className="nav-icon invert" alt ="icon"/></a>
+					<a className="nav-item" href = {item.newRoute}><img src={item.icon} className="nav-icon invert" alt ="icon"/></a>
 				);
 			}
 			
@@ -62,7 +62,7 @@ class SideBar extends Component {
 
 		return (
 			<div id="mySidenav" className="sidenav" style={navStyle}>
-				<a className="nav-item closebtn" onClick={this.toggleNav} href = '#nothing' ><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/220px-Hamburger_icon.svg.png" className="nav-icon invert" alt = "icon"/></a>
+				<p className="nav-item closebtn" onClick={this.toggleNav} ><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/220px-Hamburger_icon.svg.png" className="nav-icon invert" alt = "icon"/></p>
 				<hr />
 				{display}
 			</div>

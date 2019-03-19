@@ -1,0 +1,20 @@
+:root {
+    --button-scroll-up-left: 85%; 
+  }
+  
+  @media screen and (min-width: 35.5em) {
+    :root {
+      --button-scroll-up-left: 90%; 
+    }
+  }
+  
+/* Scroll up button */
+.button-scroll-up {
+  position: fixed;
+  top: 90%;
+  left: var(--button-scroll-up-left);
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background-color: var(--black);
+}
