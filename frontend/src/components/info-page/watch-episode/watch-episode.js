@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {YouTubePlayer} from 'react-video-players';
 import './watch-episode.css';
 
 class WatchEpisode extends Component{
@@ -31,7 +32,13 @@ class WatchEpisode extends Component{
             <div className="title">{this.state.showTitle}: Episode {this.state.episodeDetails.attributes.relativeNumber} - {this.state.episodeDetails.attributes.canonicalTitle}</div>
             <hr></hr>
             <div class='episode-content'>
-                <div class='video'></div>
+                <div class='video'>
+                    {/* <video className="media-video" controls> */}
+                        {/* pull our video links here */}   
+                    {/* </video> */}
+                    {/* https://www.youtube.com/watch?v=Pnua0NO0McM */}
+                    <YouTubePlayer videoId="Pnua0NO0McM" />
+                </div>
 
                 <div class='episode-details'>
                     Rating:<br/>

@@ -35,3 +35,8 @@
 {
     padding: auto 0;
 }
+.media-video{
+    width: 960px;
+    height: 540px;
+    background-color: black;
+}
