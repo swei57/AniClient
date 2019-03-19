@@ -7,6 +7,11 @@
     border: 1px solid #5c5c5c;
 }
 
+.searchResults {
+    position: absolute;
+    background-color: #303030;
+}
+
 .p-2 {
     margin: auto;
 }
@@ -30,4 +35,5 @@
 }
 .searchRes{
     text-decoration: none !important;
+    margin-left: 10px;
 }
