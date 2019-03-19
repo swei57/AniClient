@@ -3,6 +3,7 @@ import "./main-body.css";
 import CurrentlyWatch from './currentlyWatch/currentlyWatch';
 import RecentlyUpdated from './recentlyUpdated/recentlyUpdated';
 import Trending from './trending/trending';
+import ScrollToTop from '../utils/scroll-to-top';
 
 class MainBody extends Component {
   render() {
@@ -12,6 +13,7 @@ class MainBody extends Component {
        <CurrentlyWatch/>
        <RecentlyUpdated/>
        <Trending/>
+       <ScrollToTop/>
      </div>
     );
   }
