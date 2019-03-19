@@ -4,12 +4,13 @@ import Header from '../header/header';
 import SideBar from '../sidebar/sidebar';
 import Page from '../page/page';
 import SearchBar from '../searchbar/searchbar';
+import { Redirect } from 'react-router-dom';
 
 class SearchPage extends Component {
     constructor(props) {
         super(props);
        this.state ={
-        
+        redirect: false,
        }
     }
     componentDidMount() {
@@ -19,6 +20,23 @@ class SearchPage extends Component {
        console.log("hello");
     }
     
+    setRedirect = (e) => {
+      this.setState({
+        redirect: true,
+        showID: e.target.id
+      })
+    }
+
+  renderRedirect = () => {
+  if (this.state.redirect) {
+      return <Redirect to= {`/show/${this.state.showID}`}/>;
+  }
+}
+
+    addDefaultSrc(ev){
+      ev.target.src = 'https://i.imgur.com/sohWhy9.jpg'
+    }
+    
 
   render() {
 
@@ -26,7 +44,7 @@ class SearchPage extends Component {
         return(
         <div>
         <p className = "animeTitle" >{anime.attributes.canonicalTitle}</p>
-        <img className = "cards" alt = 'anime' src = {anime.attributes.posterImage.original} id = {anime.id}/>
+        <img onClick={this.setRedirect} onError = {this.addDefaultSrc} className = "cards" alt = 'anime' src = {anime.attributes.posterImage.original} id = {anime.id}/>
         </div>
         );
       });
@@ -36,7 +54,7 @@ class SearchPage extends Component {
         <Header />
       <div className="main-box">
         <SideBar />
-        <div className="contents">
+        <div className="contents" onScroll = {console.log("uwu")}>
         <Page/>
         <SearchBar/> 
 
@@ -48,6 +66,7 @@ class SearchPage extends Component {
         <div className = "container-full allItems">   
         <div className = "arrowColumn"></div>
         <div className ="cList">
+        {this.renderRedirect()}
         {animeArray}
         </div>
         <div className = "arrowColumn"></div>

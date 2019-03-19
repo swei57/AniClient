@@ -61,6 +61,11 @@ class SearchBar extends Component{
         } 
       }
 
+    searchButtonPressed = () =>{
+        this.setState({
+            redirect: true
+         }) 
+    }
   render(){
     return(
         <div className = "p-2">
@@ -69,7 +74,7 @@ class SearchBar extends Component{
                placeholder ="Search Anime "
                onChange =  {this.onSearchChange} onKeyPress={this.handleKeyPress} ></input> 
                {this.renderRedirect()}
-               <i className="searchIcon fas fa-search ml-3" aria-hidden="true"></i>
+               <i className="searchIcon fas fa-search ml-3" aria-hidden="true" onClick = {this.searchButtonPressed} style = {{cursor: 'pointer'}}></i>
                 <div className="searchResults">
                 {this.state.foundShows.slice(0,10).map((show) => (
                     <div className = "filterShow">
