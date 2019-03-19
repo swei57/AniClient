@@ -45,7 +45,7 @@ class InfoPage extends Component {
         });
     }
     goToEp = (a, b) => {
-        this.props.history.push("../watch/" + this.props.match.params.id + "/" + b);
+        this.props.history.push("./" + this.props.match.params.id + "/" + b);
 
     }
     swapBlur = ()=> {
