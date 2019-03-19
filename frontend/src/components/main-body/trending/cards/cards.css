@@ -1,0 +1,21 @@
+.cards{
+    width:180px;
+    border-radius: 10px;
+    cursor: pointer;
+    height: 260px;
+}
+
+.cList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 180px);
+    grid-template-rows: 325px 325px;
+    /* grid-column-gap: 5px; */
+    grid-gap: 15px;
+    justify-content: space-between;
+}
+.animeTitle{
+    text-overflow: ellipsis;
+      /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
+}

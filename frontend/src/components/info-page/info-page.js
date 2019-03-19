@@ -93,7 +93,7 @@ class InfoPage extends Component {
     }
 	render() {
         var display;
-        if(this.state.data != undefined) {
+        if(this.state.data !== undefined) {
             display = <div className="holder">
                 <Header />
                 <div className="main-box">
@@ -172,7 +172,7 @@ class InfoPage extends Component {
                                     <span class="slider round" onClick={this.swapBlur}></span>
                                 </label>
                                 <div className="show-label">
-                                    Disable blur
+                                    Toggle blur
                                 </div>
                             </div>
                             <div className="ep-list">
