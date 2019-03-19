@@ -27,7 +27,6 @@ class InfoPage extends Component {
         })
     }
     fetchEpisodes(url, array) {
-        console.log(url);
         fetch(url).then((response) => {
             if(response.status !== 200) {
                 console.log("Could not fetch episode");
@@ -45,12 +44,9 @@ class InfoPage extends Component {
             
         });
     }
-    goToEp = (a, b, c, d) => {
-        console.log(a);
-        console.log(b);
-        console.log(c);
-        console.log(d);
-        this.props.history.push("../watch/" + d);
+    goToEp = (a, b) => {
+        this.props.history.push("../watch/" + this.props.match.params.id + "/" + b);
+
     }
     swapBlur = ()=> {
         this.setState({"blur": !this.state.blur});
@@ -83,9 +79,9 @@ class InfoPage extends Component {
                         epData = <img className="cover-img strech-height" src="http://denrakaev.com/wp-content/uploads/2015/03/no-image-800x511.png" alt=""/>
                     }   
                 }
-                var x = n;
+                let x = n;
                 html.push(
-                    <div className="ep-preview" onClick={(a,b = x,c,d) => {this.goToEp(a,b,c,d);}}>
+                    <div className="ep-preview" onClick={(a,b = x) => {this.goToEp(a,b);}}>
                         {epData}
                         <div className="ep-name">{+n + 1}</div>
                     </div>
