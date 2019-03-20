@@ -28,7 +28,6 @@ class InfoPage extends Component {
         })
     }
     fetchEpisodes(url, array) {
-        console.log(url);
         fetch(url).then((response) => {
             if(response.status !== 200) {
                 console.log("Could not fetch episode");
@@ -46,6 +45,10 @@ class InfoPage extends Component {
             
         });
     }
+    goToEp = (a, b) => {
+        this.props.history.push("./" + this.props.match.params.id + "/" + b);
+
+    }
     swapBlur = ()=> {
         this.setState({"blur": !this.state.blur});
     }
@@ -58,43 +61,32 @@ class InfoPage extends Component {
                 if(ep.attributes.airdate == null || new Date(ep.attributes.airdate) > new Date())
                     continue;
                 
+                var epData;
                 if(ep.attributes.thumbnail) {
                     if(this.state.blur) {
-                        html.push(
-                            <div className="ep-preview">
-                                <img className="cover-img glass strech-height" src={ep.attributes.thumbnail.original} alt=""/>
-                                <div className="ep-name">{+n + 1}</div>
-                            </div>
-                        )
+                        epData = <img className="cover-img glass strech-height" src={ep.attributes.thumbnail.original} alt=""/>
                     }
                     else {
-                        html.push(
-                            <div className="ep-preview">
-                                <img className="cover-img strech-height" src={ep.attributes.thumbnail.original} alt=""/>
-                                <div className="ep-name">{+n + 1}</div>
-                            </div>
-                        )
+                        epData = <img className="cover-img strech-height" src={ep.attributes.thumbnail.original} alt=""/>
                     }
                     
                 }
                 else {
                     if(this.state.blur) {
-                        html.push(
-                            <div className="ep-preview">
-                                <img className="cover-img glass strech-height" src="http://denrakaev.com/wp-content/uploads/2015/03/no-image-800x511.png" alt=""/>
-                                <div className="ep-name">{+n + 1}</div>
-                            </div>
-                        )
+                        epData = <img className="cover-img glass strech-height" src="http://denrakaev.com/wp-content/uploads/2015/03/no-image-800x511.png" alt=""/>
+
                     }
                     else {
-                        html.push(
-                            <div className="ep-preview">
-                                <img className="cover-img strech-height" src="http://denrakaev.com/wp-content/uploads/2015/03/no-image-800x511.png" alt=""/>
-                                <div className="ep-name">{+n + 1}</div>
-                            </div>
-                        )
-                    }
+                        epData = <img className="cover-img strech-height" src="http://denrakaev.com/wp-content/uploads/2015/03/no-image-800x511.png" alt=""/>
+                    }   
                 }
+                let x = n;
+                html.push(
+                    <div className="ep-preview" onClick={(a,b = x) => {this.goToEp(a,b);}}>
+                        {epData}
+                        <div className="ep-name">{+n + 1}</div>
+                    </div>
+                );
                 
             }
         }
