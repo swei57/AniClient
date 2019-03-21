@@ -4,9 +4,11 @@ import CardList from './cards/cardList';
 class Trending extends Component {
   render() {
     return (
-     <div>
-     <CardList />
-     </div>
+    <div>
+      <h4 className = "ml-4 mt-4" id = "trending">Trending</h4>
+      <hr></hr>
+      <CardList/>
+    </div>
     );
   }
 }

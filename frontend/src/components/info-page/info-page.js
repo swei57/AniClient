@@ -3,30 +3,44 @@ import "./info-page.css"
 import SideBar from '../sidebar/sidebar';
 import Header from '../header/header';
 import SearchBar from '../searchbar/searchbar';
+import {Redirect} from 'react-router-dom';
+
+import ShowInfo from './show-info/show-info';
+import WatchEpisode from './watch-episode/watch-episode';
 import ScrollToTop from '../utils/scroll-to-top';
 
 class InfoPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            "blur": true
+            "blur": true,
+            showId: 0,
+            redirect: false,
+            epToSee: 0,
+            episodeDetails: []
         };
     }
+
+    // Here we take the showID from the url to fetch the show's information
+    // and then call to collect episode information
     componentDidMount() {
         const id = this.props.match.params.id;
-        var url = 'https://kitsu.io/api/edge/anime/' + id;
+        //https://api.jikan.moe/v3/anime/id/request/parameter
+        var url = 'https://api.jikan.moe/v3/anime/' + id;
         fetch(url).then((response) => {
             if(response.status !== 200) {
                 console.log("Fetch Error");
                 return;
             }
             response.json().then((data) => {
-                this.setState({"data": data.data});
+                this.setState({"data": data.data, showId: id});
                 var epUrl = url + "/episodes";
                 this.fetchEpisodes(epUrl, []);
             });
         })
     }
+
+    // fetch episode information and store in local 'episodes' state array
     fetchEpisodes(url, array) {
         fetch(url).then((response) => {
             if(response.status !== 200) {
@@ -40,8 +54,19 @@ class InfoPage extends Component {
                 }
                 else {
                     this.setState({"episodes": array});
+                    console.log(this.state.episodes);
+
+                    // If the specify the episode to see in the route to this page, set this variable
+                    // so we can display the video player immediately.
+                    if(this.props.match.params.epNo >= 1 && this.props.match.params.epNo <= this.state.episodes.length)
+                    {
+                        this.setState({epToSee: this.props.match.params.epNo});
+                        this.setState({episodeDetails: this.state.episodes[this.state.epToSee-1]});
+                    }
                 }
             });
+
+        
             
         });
     }
@@ -52,33 +77,67 @@ class InfoPage extends Component {
     swapBlur = ()=> {
         this.setState({"blur": !this.state.blur});
     }
+
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            console.log(this.state.epToSee);
+        return <Redirect to={`/show/${this.state.showId}/${this.state.epToSee}`} />
+        }
+    }
+    watchEpisode = (e) => {
+        this.setState({
+            epToSee: e.target.id,
+            redirect: true,
+        });
+    }
+
     displayEpisodes = () => {
         var html = [];
         if(this.state.episodes) {
-            for(var n in this.state.episodes) {
+            for(var n in this.state.episodes) { // iterate over all the episodes
                 var ep = this.state.episodes[n];
                 console.log(ep);
                 if(ep.attributes.airdate == null || new Date(ep.attributes.airdate) > new Date())
-                    continue;
+                    continue; // ignore episodes that have not yet aired
                 
-                var epData;
+                // Display blurred/unblurred thumbnails for episodes
                 if(ep.attributes.thumbnail) {
                     if(this.state.blur) {
-                        epData = <img className="cover-img glass strech-height" src={ep.attributes.thumbnail.original} alt=""/>
-                    }
-                    else {
-                        epData = <img className="cover-img strech-height" src={ep.attributes.thumbnail.original} alt=""/>
+                        html.push(
+                            <div className="ep-preview">
+                                <img className="cover-img glass strech-height" src={ep.attributes.thumbnail.original} id={ep.attributes.relativeNumber} 
+                                onClick={this.watchEpisode} alt=""/>
+                                <div className="ep-name">{+n + 1}</div>
+                            </div>
+                        )
+                    } else {
+                        html.push(
+                            <div className="ep-preview">
+                                <img className="cover-img strech-height" src={ep.attributes.thumbnail.original} id={ep.attributes.relativeNumber} 
+                                onClick={this.watchEpisode} alt=""/>
+                                <div className="ep-name">{+n + 1}</div>
+                            </div>
+                        )
                     }
                     
-                }
-                else {
+                } else {
                     if(this.state.blur) {
-                        epData = <img className="cover-img glass strech-height" src="http://denrakaev.com/wp-content/uploads/2015/03/no-image-800x511.png" alt=""/>
-
+                        html.push(
+                            <div className="ep-preview">
+                                <img className="cover-img glass strech-height" src="http://denrakaev.com/wp-content/uploads/2015/03/no-image-800x511.png" 
+                                id={ep.attributes.relativeNumber} onClick={this.watchEpisode} alt=""/>
+                                <div className="ep-name">{+n + 1}</div>
+                            </div>
+                        )
+                    } else {
+                        html.push(
+                            <div className="ep-preview">
+                                <img className="cover-img strech-height" src="http://denrakaev.com/wp-content/uploads/2015/03/no-image-800x511.png" 
+                                id={ep.attributes.relativeNumber} onClick={this.watchEpisode} alt=""/>
+                                <div className="ep-name">{+n + 1}</div>
+                            </div>
+                        )
                     }
-                    else {
-                        epData = <img className="cover-img strech-height" src="http://denrakaev.com/wp-content/uploads/2015/03/no-image-800x511.png" alt=""/>
-                    }   
                 }
                 let x = n;
                 html.push(
@@ -94,74 +153,21 @@ class InfoPage extends Component {
     }
 	render() {
         var display;
-        if(this.state.data !== undefined) {
-            display = <div className="holder">
+        if(this.state.data !== undefined)
+        {
+        display = <div className="holder">
                 <Header />
                 <div className="main-box">
-                    <SideBar />
-                    <div className="contents">
-                        <div className="sidebar-container"><SearchBar /></div>
-                        <div className="title">{this.state.data.attributes.canonicalTitle}</div>
-                        <hr/>
-                        <div className="show-info">
-                            <div className="short-info">
-                                <img className="cover-img" src={this.state.data.attributes.posterImage.original} alt=""/>
-                                <div>
-                                    <p>Rating: Pending</p>
-                                    <p>Popularity: {this.state.data.attributes.popularityRank}</p>
-                                </div>
-                            </div>
-                            <div className="studio-info">
-                                <div className="info-header">Information</div>
-                                <table className="studio-table">
-                                    <tbody>
-                                        <tr>
-                                            <td>Type:</td>
-                                            <td>{this.state.data.attributes.subtype}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Episodes:</td>
-                                            <td>{this.state.data.attributes.episodeCount}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Status:</td>
-                                            <td>{this.state.data.attributes.status.charAt(0).toUpperCase() + this.state.data.attributes.status.slice(1)}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Aired:</td>
-                                            <td>{(new Date(this.state.data.attributes.startDate)).toDateString()}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Premired:</td>
-                                            <td>Winter 2019</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Studios:</td>
-                                            <td>Kinema Citrus</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Genres:</td>
-                                            <td>Action, Adventure, Drama, Fantasy</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Duration:</td>
-                                            <td>{this.state.data.attributes.episodeLength} min</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Popularity:</td>
-                                            <td>#297</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div className="summary">
-                                <div className="info-header">Synopsis</div>
-                                <div className="summary-text">
-                                {this.state.data.attributes.synopsis}
-                                </div>
+                <SideBar />
+                <div className="contents">
+                <div className="sidebar-container"><SearchBar /></div>
 
-                            </div>
-                        </div>
+                {this.renderRedirect()}
+
+                { (this.state.epToSee == 0) ? <ShowInfo showData={this.state.data}/> : 
+                <WatchEpisode showTitle={this.state.data.attributes.canonicalTitle} 
+                episodeDetails={this.state.episodes[this.state.epToSee -1]}/> }
+
                         <div className="episodes">
                             <div className="title">
                                 Episode List
@@ -189,7 +195,7 @@ class InfoPage extends Component {
             display = <div>Loading data, please hold</div>
         }
 		return (
-			display
+            display
 		);
     }
 }

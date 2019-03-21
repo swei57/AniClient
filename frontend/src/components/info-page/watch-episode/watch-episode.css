@@ -1,0 +1,42 @@
+.episode-content
+{
+    display: flex;
+    padding: 1vw 0vw;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.video
+{
+    width: 960px;
+    height: 540px;
+    background-color: black;
+}
+
+.episode-details
+{
+    width: 20%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.synopsis
+{
+    border: 1px solid #b0b0b0;
+    border-radius: 5px;
+    overflow-y: scroll;
+    height: 50%;
+
+    color: #b0b0b0;
+}
+
+.slider-box
+{
+    padding: auto 0;
+}
+.media-video{
+    width: 960px;
+    height: 540px;
+    background-color: black;
+}
