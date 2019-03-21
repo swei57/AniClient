@@ -42,7 +42,6 @@ class InfoPage extends Component {
 
     // fetch episode information and store in local 'episodes' state array
     fetchEpisodes(url, array) {
-        console.log(url);
         fetch(url).then((response) => {
             if(response.status !== 200) {
                 console.log("Could not fetch episode");
@@ -70,6 +69,10 @@ class InfoPage extends Component {
         
             
         });
+    }
+    goToEp = (a, b) => {
+        this.props.history.push("./" + this.props.match.params.id + "/" + b);
+
     }
     swapBlur = ()=> {
         this.setState({"blur": !this.state.blur});
@@ -136,6 +139,13 @@ class InfoPage extends Component {
                         )
                     }
                 }
+                let x = n;
+                html.push(
+                    <div className="ep-preview" onClick={(a,b = x) => {this.goToEp(a,b);}}>
+                        {epData}
+                        <div className="ep-name">{+n + 1}</div>
+                    </div>
+                );
                 
             }
         }
