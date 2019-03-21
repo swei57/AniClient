@@ -25,8 +25,8 @@ class InfoPage extends Component {
     // and then call to collect episode information
     componentDidMount() {
         const id = this.props.match.params.id;
-
-        var url = 'https://kitsu.io/api/edge/anime/' + id;
+        //https://api.jikan.moe/v3/anime/id/request/parameter
+        var url = 'https://api.jikan.moe/v3/anime/' + id;
         fetch(url).then((response) => {
             if(response.status !== 200) {
                 console.log("Fetch Error");

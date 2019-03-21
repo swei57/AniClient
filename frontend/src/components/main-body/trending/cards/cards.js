@@ -29,6 +29,7 @@ class Card extends Component {
 
   // Fetch the top 100 trending anime from kitsu, store their names in the animeNames array
   componentDidMount() {
+    //https://api.jikan.moe/v3/top/type/page/subtype
     fetch('https://kitsu.io/api/edge/trending/anime?limit=100')
     .then(res => res.json())
     .then(
